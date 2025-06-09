@@ -1,52 +1,70 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial (Layout Alternativo) - encontreaqui</title>
+    <meta name="description" content="Junte-se à nossa fogueira na casa da vovó para uma festa junina inesquecível!">
+    <meta name="keywords" content="festa junina, quadrilha, fogueira, família">
+    <title>Fogueira na Casa da Vovó</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>encontreaqui</h1>
-        <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-label="Alternar menu">
-        <label for="menu-toggle" class="menu-toggle open-menu">
-            <i class="fas fa-bars"></i>
-        </label>
-        <nav>
-            <label for="menu-toggle" class="menu-toggle close-menu">
-                <i class="fas fa-times"></i>
-            </label>
-            <ul>
-                <li><a href="index.html">Página Inicial</a></li>
-                <li><a href="index2.html">Página Inicial (Alternativa)</a></li>
-                <li><a href="detalhes.html">Detalhes</a></li>
-                <li><a href="sobre.html">Sobre o Autor</a></li>
-                <li><a href="admin/login.html">Faça seu Cadastro</a></li>
-                <li><a href="https://www.magazinevoce.com.br/magazinecomlay/">Compre Aqui Diversos</a></li>
-                <li><a href="https://mygogroup.com.br/">Marketing Mygo</a></li>
-            </ul>
-        </nav>
-        <div class="container">
-            <img class="myimg" src="encontreaqui.png" alt="Logo do Meu Site">
+        <h1>Fogueira na Casa da Vovó</h1>
+        <p>Venha curtir uma noite de São João com a família!</p>
+        <div class="audio-controls">
+            <audio id="background-music" loop>
+                <source src="festa-junina.mp3" type="audio/mpeg">
+                Seu navegador não suporta áudio.
+            </audio>
+            <button id="play-pause-btn">Tocar Música</button>
         </div>
     </header>
 
-    <main>
-        <p>Encontre Aqui: O Seu Caminho para Lugares, Trabalho, Apps e Cursos!<br>
-        Bem-vindo ao Encontre Aqui, o portal que abre as portas para um mundo de possibilidades!<br>
-        Descubra lugares fascinantes, de destinos turísticos imperdíveis a recantos especiais na sua cidade.<br>
-        Conquiste o trabalho dos seus sonhos com vagas que valorizam seu talento e impulsionam sua carreira.<br>
-        Desfrute dos melhores apps de streaming, trazendo séries, filmes e músicas para transformar seus momentos de lazer.<br>
-        E amplie seus horizontes com cursos que inspiram, capacitam e preparam você para novos desafios.<br>
-        No Encontre Aqui, tudo o que você precisa está a um clique. Explore, conecte-se e construa seu futuro agora!</p>
-    </main>
+    <section class="main-content">
+        <img src="fogueira.jpg" alt="Fogueira na casa da vovó" class="fogueira-img">
+        <div class="event-details">
+            <h2>Sobre a Fogueira</h2>
+            <p>Junte-se a nós para uma festa junina inesquecível na casa da vovó! Traga sua alegria e uma contribuição para nossa fogueira: comidas típicas (canjica, pamonha, bolo de milho), sucos ou refrigerantes. Vamos dançar quadrilha, comer delícias e aquecer o coração!</p>
+            <ul>
+                <li><strong>Data:</strong> [Insira a data, ex.: 25 de Junho de 2025]</li>
+                <li><strong>Horário:</strong> A partir das 18h</li>
+                <li><strong>Local:</strong> Casa da Vovó - [Insira o endereço, ex.: Rua das Flores, 123, Bairro, Cidade]</li>
+                <li><strong>Mapa:</strong> <a href="[Insira link do Google Maps]" target="_blank">Ver no Google Maps</a></li>
+            </ul>
+            <h3>Junte-se ao Grupo!</h3>
+            <p>Entre no nosso grupo do WhatsApp para combinar os detalhes e confirmar sua presença!</p>
+            <a href="[Insira link do WhatsApp]" target="_blank" class="whatsapp-btn">Entrar no Grupo do WhatsApp</a>
+        </div>
+
+        <div class="rsvp-form">
+            <h2>Confirme Sua Presença</h2>
+            <form action="https://formspree.io/f/[SEU_FORMSPREE_ID]" method="POST">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="contribution">O que você vai trazer?</label>
+                <select id="contribution" name="contribution" required>
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="Comida típica">Comida típica (ex.: canjica, pamonha)</option>
+                    <option value="Suco">Suco</option>
+                    <option value="Refrigerante">Refrigerante</option>
+                    <option value="Outro">Outro (especifique no comentário)</option>
+                </select>
+                
+                <label for="comment">Comentário (opcional):</label>
+                <textarea id="comment" name="comment" rows="4"></textarea>
+                
+                <button type="submit">Confirmar Presença</button>
+            </form>
+        </div>
+    </section>
 
     <footer>
-        <p>© 2025 José Gilmar Oliveira de Sá</p>
-        <p>"JESUS TODA HONRA E GLÓRIA"</p>
-        <p><a href="sobre.html">Sobre o Autor</a></p>
+        <p>Feito com ❤️ pela família para a família!</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
