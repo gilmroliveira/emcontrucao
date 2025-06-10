@@ -14,11 +14,8 @@
         <h1>Fogueira na Casa da Vovó</h1>
         <p>Venha curtir uma noite com a família!</p>
         <div class="audio-controls">
-            <audio id="background-music" loop autoplay>
-                <source src="musica.mp3" type="audio/mpeg">
-                Seu navegador não suporta áudio.
-            </audio>
-            <button id="play-pause-btn">Pausar Música</button>
+            <iframe id="youtube-music" width="1" height="1" src="https://www.youtube.com/embed/rhCZ_0d9u00?loop=1&playlist=rhCZ_0d9u00" frameborder="0" allow="autoplay"></iframe>
+            <button id="play-pause-btn">Tocar Música</button>
         </div>
     </header>
 
@@ -28,7 +25,7 @@
             <h2>Sobre a Fogueira</h2>
             <p>🎉 **Junte-se a nós para um encontro inesquecível na casa da vovó!** 🏡✨  
 Traga sua alegria 😊 e uma contribuição para nossa fogueira 🔥: comidas típicas como canjica 🌽, pamonha 🌽, bolo de milho 🥮, sucos 🧃 ou refrigerantes 🥤. Venha celebrar esse momento especial para estar com nossa querida matriarca 👵, comer delícias 😋 e aquecer o coração com amor e união! ❤️🌟</p>
-<p>Agradecimento pelo Engajamento na Fogueira na Casa da Vovó 🎉🔥
+            <p>Agradecimento pelo Engajamento na Fogueira na Casa da Vovó 🎉🔥
 
 Querida família e amigos,  
 Muito obrigado pelo entusiasmo e apoio incrível para tornar a nossa Fogueira na Casa da Vovó um momento especial! ❤️ O engajamento de vocês, com tantas confirmações e contribuições, está aquecendo nossos corações e tornando esse encontro ainda mais significativo. Reunir-nos na casa da vovó é uma oportunidade preciosa para celebrar o amor, a união e a presença dela, que ilumina nossas vidas. 🌟
@@ -38,7 +35,7 @@ Queremos ver ainda mais rostos sorridentes ao redor da fogueira! 🌈 Convidem s
 Nos vemos na Casa da Vovó, prontos para celebrar juntos esse laço tão especial! 💖🔥  
 #FogueiraNaCasaDaVovó #Família #Amor</p>
             <ul>
-                <li><strong>Data:</strong>14/06/2025. SÁBADO!!</li>
+                <li><strong>Data:</strong> 14/06/2025. SÁBADO!!</li>
                 <li><strong>Horário:</strong> A partir das 18h</li>
                 <li><strong>Local:</strong> Casa da Vovó - RUA DAS PALMEIRAS NO ACONCHEGO DE VÓ </li>
                 <li><strong>Mapa:</strong> <a href="https://maps.app.goo.gl/ydfTaH9UUttDW9kx5" target="_blank">Ver no Google Maps</a></li>
@@ -51,15 +48,18 @@ Nos vemos na Casa da Vovó, prontos para celebrar juntos esse laço tão especia
         <div class="rsvp-form">
             <h2>Confirme Sua Presença</h2>
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeBUWdLq6SDcrEBv1WQCRLL-7OxzMVFFJEPhqH_QMpoeozigg/viewform?embedded=true" width="500" height="600" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+        </div>
+    </section>
 
     <footer>
         <p>Feito com ❤️ pela família para a família!</p>
-                <p>TODA HONRA E GLÓRIA A JESUS</p>
-                <p>Criado por José Gilmar</p>
+        <p>TODA HONRA E GLÓRIA A JESUS</p>
+        <p>Criado por José Gilmar</p>
         <p><a href="sobre.html">Sobre o Autor</a></p>
-                
+        <p id="music-attribution">Música: [Nome da Música] por [Artista], YouTube Audio Library</p>
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
