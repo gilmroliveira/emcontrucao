@@ -9,9 +9,9 @@ let isPlaying = false;
 
 // Lista de músicas (substitua pelos nomes reais dos seus arquivos)
 const playlist = [
-    { file: 'festa-junina1.mp3', title: '[Nome da Música 1]' },
-    { file: 'festa-junina2.mp3', title: '[Nome da Música 2]' },
-    { file: 'festa-junina3.mp3', title: '[Nome da Música 3]' }
+    { file: 'falamansa.mp3', title: 'Fala mansa' },
+    { file: 'mastruzcomleite.mp3', title: 'Mastruz com oeite' },
+    { file: 'wsafadao.mp3', title: 'Wesley safadão' }
 ];
 let currentTrackIndex = 0;
 
