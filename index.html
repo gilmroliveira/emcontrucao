@@ -15,16 +15,16 @@
         <p>Venha curtir uma noite com a família!</p>
         <div class="audio-controls">
             <audio id="background-music">
-                <source id="audio-source" src="festa-junina1.mp3" type="audio/mpeg">
+                <source id="audio-source" src="Falamansa.mp3" type="audio/mpeg">
                 Seu navegador não suporta áudio.
             </audio>
             <button id="play-pause-btn">Tocar Música</button>
             <button id="prev-btn">Anterior</button>
             <button id="next-btn">Próxima</button>
             <select id="music-select">
-                <option value="Falamansa.mp3">Música 1:fala mansa</option>
-                <option value="mastruzcomleite.mp3">Música 2: mastruz com leite</option>
-                <option value="wsafadao.mp3">Música 3: Wesley safadão</option>
+                <option value="Falamansa.mp3">Música 1: Fala Mansa</option>
+                <option value="mastruzcomleite.mp3">Música 2: Mastruz com Leite</option>
+                <option value="wsafadao.mp3">Música 3: Wesley Safadão</option>
             </select>
         </div>
     </header>
@@ -59,6 +59,19 @@ Nos vemos na Casa da Vovó, prontos para celebrar juntos esse laço tão especia
             <h2>Confirme Sua Presença</h2>
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeBUWdLq6SDcrEBv1WQCRLL-7OxzMVFFJEPhqH_QMpoeozigg/viewform?embedded=true" width="500" height="600" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
         </div>
+
+        <div class="photo-gallery">
+            <h2>Galeria de Fotos</h2>
+            <div class="gallery-grid">
+                <img src="foto1.jpg" alt="Foto da festa junina 1" class="gallery-img" onclick="openLightbox('foto1.jpg')">
+                <img src="foto2.jpg" alt="Foto da festa junina 2" class="gallery-img" onclick="openLightbox('foto2.jpg')">
+                <img src="foto3.jpg" alt="Foto da festa junina 3" class="gallery-img" onclick="openLightbox('foto3.jpg')">
+            </div>
+            <div id="lightbox" class="lightbox">
+                <span class="close-lightbox" onclick="closeLightbox()">×</span>
+                <img id="lightbox-img" src="" alt="Imagem ampliada">
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -66,7 +79,7 @@ Nos vemos na Casa da Vovó, prontos para celebrar juntos esse laço tão especia
         <p>TODA HONRA E GLÓRIA A JESUS</p>
         <p>Criado por José Gilmar</p>
         <p><a href="sobre.html">Sobre o Autor</a></p>
-        <p id="music-attribution">Música: Fala mansa, Mastruz com leite,  Wesley safadão por festa junina</p>
+        <p id="music-attribution">Música: [Confirmar nomes e artistas das músicas]</p>
     </footer>
 
     <script src="script.js"></script>
