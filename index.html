@@ -22,10 +22,14 @@
             <button id="prev-btn">Anterior</button>
             <button id="next-btn">Próxima</button>
             <select id="music-select">
-                <option value="massademandioca.mp3">Música 1: massademandioca</option>
+                <option value="massademandioca.mp3">Música 1: Massa de Mandioca</option>
                 <option value="mastruzcomleite.mp3">Música 2: Mastruz com Leite</option>
                 <option value="wsafadao.mp3">Música 3: Wesley Safadão</option>
             </select>
+            <div class="audio-progress">
+                <input type="range" id="progress-bar" min="0" max="100" value="0">
+                <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+            </div>
         </div>
     </header>
 
@@ -63,15 +67,33 @@ Nos vemos na Casa da Vovó, prontos para celebrar juntos esse laço tão especia
         <div class="photo-gallery">
             <h2>Galeria de Fotos</h2>
             <div class="gallery-grid">
-                <img src="IMG-20190915-WA0013.jpg" alt="Foto da vovó " class="gallery-img" onclick="openLightbox('foto1.jpg')">
-                <img src="IMG-20250609-WA0059.jpg" alt="Foto da vovó" class="gallery-img" onclick="openLightbox('foto2.jpg')">
-                <img src="IMG-20250609-WA0061.jpg" alt="Foto da vovó" class="gallery-img" onclick="openLightbox('foto3.jpg')">
-                <img src="IMG-20250610-WA0007.jpg" alt="Foto da vovó" class="gallery-img" onclick="openLightbox('foto4.jpg')">
-                <img src="IMG-20250610-WA0003.jpg" alt="Foto da vovó" class="gallery-img" onclick="openLightbox('foto5.jpg')">
+                <div class="gallery-item">
+                    <img src="IMG-20190915-WA0013.jpg" alt="Foto da vovó" class="gallery-img" onclick="openLightbox(this.src, 0)">
+                    <div class="gallery-caption">Fogueira 2019</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250609-WA0059.jpg" alt="Foto da vovó" class="gallery-img" onclick="openLightbox(this.src, 1)">
+                    <div class="gallery-caption">Família reunida</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250609-WA0061.jpg" alt="Foto da vovó" class="gallery-img" onclick="openLightbox(this.src, 2)">
+                    <div class="gallery-caption">Sorriso da vovó</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250610-WA0007.jpg" alt="Foto da vovó" class="gallery-img" onclick="openLightbox(this.src, 3)">
+                    <div class="gallery-caption">Momento especial</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250610-WA0003.jpg" alt="Foto da vovó" class="gallery-img" onclick="openLightbox(this.src, 4)">
+                    <div class="gallery-caption">Festa junina</div>
+                </div>
             </div>
             <div id="lightbox" class="lightbox">
                 <span class="close-lightbox" onclick="closeLightbox()">×</span>
+                <span class="prev-lightbox" onclick="changeLightboxImage(-1)">&#10094;</span>
                 <img id="lightbox-img" src="" alt="Imagem ampliada">
+                <span class="next-lightbox" onclick="changeLightboxImage(1)">&#10095;</span>
+                <div id="lightbox-caption"></div>
             </div>
         </div>
     </section>
@@ -83,6 +105,8 @@ Nos vemos na Casa da Vovó, prontos para celebrar juntos esse laço tão especia
         <p><a href="sobre.html">Sobre o Autor</a></p>
         <p id="music-attribution">Música: de Sucesso!!</p>
     </footer>
+
+    <button id="scroll-top-btn" title="Voltar ao topo">↑</button>
 
     <script src="script.js"></script>
 </body>
