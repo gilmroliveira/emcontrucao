@@ -9,7 +9,7 @@ let isPlaying = false;
 
 // Lista de músicas
 const playlist = [
-    { file: 'Falamansa.mp3', title: 'Fala Mansa' },
+    { file: 'massademandioca.mp3', title: 'massa de mandioca' },
     { file: 'mastruzcomleite.mp3', title: 'Mastruz com Leite' },
     { file: 'wsafadao.mp3', title: 'Wesley Safadão' }
 ];
