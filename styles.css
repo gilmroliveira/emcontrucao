@@ -4,6 +4,7 @@ body {
     background-color: #fff3e0;
     color: #333;
     text-align: center;
+    position: relative;
 }
 
 header {
@@ -30,6 +31,19 @@ header p {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.audio-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+#progress-bar {
+    width: 150px;
+    cursor: pointer;
 }
 
 #play-pause-btn, #prev-btn, #next-btn {
@@ -40,6 +54,7 @@ header p {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.3s;
 }
 
 #play-pause-btn:hover, #prev-btn:hover, #next-btn:hover {
@@ -91,7 +106,7 @@ header p {
 .whatsapp-btn {
     display: inline-block;
     background-color: #25d366;
-    color: white;
+ color: white;
     padding: 1rem 2rem;
     border-radius: 5px;
     text-decoration: none;
@@ -101,7 +116,8 @@ header p {
 }
 
 .whatsapp-btn:hover {
-    background-color: #1ebe57;
+    background-color: #1ebe;
+    57;
 }
 
 .rsvp-form {
@@ -121,7 +137,7 @@ header p {
 
 .photo-gallery {
     margin-top: 2rem;
-    text-align: left;
+    text-align: center;
 }
 
 .photo-gallery h2 {
@@ -137,17 +153,43 @@ header p {
     margin-top: 1rem;
 }
 
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
 .gallery-img {
     width: 100%;
     height: auto;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .gallery-img:hover {
     transform: scale(1.05);
+    opacity: 0.8;
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0,0.7);
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-caption {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .lightbox {
@@ -157,16 +199,51 @@ header p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0,0.8);
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    overflow: auto;
 }
 
-.lightbox img {
+#lightbox-img {
     max-width: 90%;
-    max-height: 90%;
+    max-height: 80vh;
     border-radius: 5px;
+    animation: fadeIn 0.3s ease;
+}
+
+#lightbox-caption {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.prev-lightbox, .next-lightbox {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    padding: 10px;
+    user-select: none;
+    transition: background-color 0.3s;
+}
+
+.prev-lightbox:hover, .next-lightbox:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.prev-lightbox {
+    content: left;
+    left: 20px;
+}
+
+.next-lightbox {
+    right: 20px;
 }
 
 .close-lightbox {
@@ -176,6 +253,11 @@ header p {
     font-size: 2rem;
     color: white;
     cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-lightbox:hover {
+    color: #d81b60;
 }
 
 footer {
@@ -190,8 +272,36 @@ footer p {
 }
 
 footer a {
-    color: white;
+    color: #fff;
     text-decoration: underline;
+}
+
+#scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #d81b60;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+#scroll-top-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @media (max-width: 600px) {
@@ -210,7 +320,12 @@ footer a {
 
     .audio-controls {
         flex-direction: column;
-        gap: 5px;
+        gap: 10px;
+    }
+
+    .audio-progress {
+        width: 100%;
+        justify-content: center;
     }
 
     #music-select {
@@ -220,5 +335,10 @@ footer a {
 
     .gallery-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    #lightbox-img {
+        max-width: 95vw;
+        max-height: 70vh;
     }
 }
