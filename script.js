@@ -7,11 +7,11 @@ const nextBtn = document.getElementById('next-btn');
 const musicSelect = document.getElementById('music-select');
 let isPlaying = false;
 
-// Lista de músicas (substitua pelos nomes reais dos seus arquivos)
+// Lista de músicas
 const playlist = [
-    { file: 'falamansa.mp3', title: 'Fala mansa' },
-    { file: 'mastruzcomleite.mp3', title: 'Mastruz com oeite' },
-    { file: 'wsafadao.mp3', title: 'Wesley safadão' }
+    { file: 'Falamansa.mp3', title: 'Fala Mansa' },
+    { file: 'mastruzcomleite.mp3', title: 'Mastruz com Leite' },
+    { file: 'wsafadao.mp3', title: 'Wesley Safadão' }
 ];
 let currentTrackIndex = 0;
 
@@ -69,3 +69,16 @@ document.querySelector('.whatsapp-btn').addEventListener('click', () => {
 
 // Carregar a primeira música ao iniciar
 loadTrack(currentTrackIndex);
+
+// Controle da galeria de fotos (lightbox)
+function openLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = src;
+    lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+}
