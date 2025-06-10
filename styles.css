@@ -5,6 +5,12 @@ body {
     color: #333;
     text-align: center;
     position: relative;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #e0e0e0;
 }
 
 header {
@@ -12,6 +18,11 @@ header {
     padding: 2rem;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+body.dark-mode header {
+    background: linear-gradient(to bottom, #444, #666);
 }
 
 header h1 {
@@ -23,6 +34,35 @@ header h1 {
 header p {
     font-size: 1.2rem;
     margin: 0.5rem 0;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#theme-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s;
+}
+
+#theme-btn:hover {
+    transform: scale(1.2);
+}
+
+.countdown {
+    margin: 1rem 0;
+    color: white;
+}
+
+#countdown-timer {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .audio-controls {
@@ -39,6 +79,11 @@ header p {
     align-items: center;
     gap: 10px;
     font-size: 0.9rem;
+    color: white;
+}
+
+body.dark-mode .audio-progress {
+    color: #e0e0e0;
 }
 
 #progress-bar {
@@ -46,7 +91,7 @@ header p {
     cursor: pointer;
 }
 
-#play-pause-btn, #prev-btn, #next-btn {
+#play-pause-btn, #prev-btn, #next-btn, #carousel-play-pause {
     background-color: #d81b60;
     color: white;
     border: none;
@@ -57,7 +102,7 @@ header p {
     transition: background-color 0.3s;
 }
 
-#play-pause-btn:hover, #prev-btn:hover, #next-btn:hover {
+#play-pause-btn:hover, #prev-btn:hover, #next-btn:hover, #carousel-play-pause:hover {
     background-color: #b71c1c;
 }
 
@@ -67,6 +112,12 @@ header p {
     font-size: 1rem;
     background-color: #fff;
     border: 1px solid #ccc;
+}
+
+body.dark-mode #music-select {
+    background-color: #444;
+    color: #e0e0e0;
+    border-color: #666;
 }
 
 .main-content {
@@ -106,7 +157,7 @@ header p {
 .whatsapp-btn {
     display: inline-block;
     background-color: #25d366;
- color: white;
+    color: white;
     padding: 1rem 2rem;
     border-radius: 5px;
     text-decoration: none;
@@ -116,8 +167,7 @@ header p {
 }
 
 .whatsapp-btn:hover {
-    background-color: #1ebe;
-    57;
+    background-color: #1ebe57;
 }
 
 .rsvp-form {
@@ -146,6 +196,10 @@ header p {
     color: #d81b60;
 }
 
+.carousel-controls {
+    margin: 1rem 0;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -163,7 +217,7 @@ header p {
     height: auto;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -177,7 +231,7 @@ header p {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 0.5rem;
     text-align: center;
@@ -199,7 +253,7 @@ header p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -211,6 +265,25 @@ header p {
     max-height: 80vh;
     border-radius: 5px;
     animation: fadeIn 0.3s ease;
+    display: none;
+}
+
+#lightbox-img.loaded {
+    display: block;
+}
+
+.spinner {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #fff;
+    border-top: 4px solid #d81b60;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.lightbox.loading .spinner {
+    display: block;
 }
 
 #lightbox-caption {
@@ -227,18 +300,16 @@ header p {
     color: white;
     font-size: 2rem;
     cursor: pointer;
-    padding: 0;
     padding: 10px;
     user-select: none;
     transition: background-color 0.3s;
 }
 
 .prev-lightbox:hover, .next-lightbox:hover {
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .prev-lightbox {
-    content: left;
     left: 20px;
 }
 
@@ -267,12 +338,16 @@ footer {
     margin-top: 2rem;
 }
 
+body.dark-mode footer {
+    background-color: #444;
+}
+
 footer p {
     margin: 0.5rem 0;
 }
 
 footer a {
-    color: #fff;
+    color: white;
     text-decoration: underline;
 }
 
@@ -291,12 +366,17 @@ footer a {
     display: none;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     transition: opacity 0.3s, transform 0.3s;
 }
 
 #scroll-top-btn:hover {
     transform: scale(1.1);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes fadeIn {
@@ -340,5 +420,9 @@ footer a {
     #lightbox-img {
         max-width: 95vw;
         max-height: 70vh;
+    }
+
+    .countdown {
+        font-size: 1.2rem;
     }
 }
