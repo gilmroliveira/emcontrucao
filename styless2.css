@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
@@ -23,13 +22,6 @@ header h1 {
     font-family: 'Amatic SC', cursive;
     font-size: 3rem;
 }
-.profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
 
 header p {
     font-size: 1.2rem;
@@ -47,6 +39,15 @@ header p {
     margin-bottom: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem; /* Centraliza a imagem */
+    display: block; /* Garante que a imagem seja tratada como bloco */
 }
 
 h2 {
@@ -71,9 +72,11 @@ ul li {
 ul li a {
     color: #4CAF50;
     text-decoration: none;
+    transition: color 0.3s ease; /* Transição suave para hover */
 }
 
 ul li a:hover {
+    color: #388E3C; /* Cor mais escura no hover */
     text-decoration: underline;
 }
 
@@ -91,5 +94,10 @@ footer {
 
     .main-content {
         padding: 0 0.5rem;
+    }
+
+    .profile-img {
+        width: 120px; /* Reduz o tamanho em telas menores */
+        height: 120px;
     }
 }
