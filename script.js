@@ -1,4 +1,3 @@
-// Controle da playlist
 const audio = document.getElementById('background-music');
 const audioSource = document.getElementById('audio-source');
 const playPauseBtn = document.getElementById('play-pause-btn');
@@ -59,7 +58,7 @@ function updateDuration() {
         durationDisplay.textContent = formatTime(audio.duration);
         progressBar.value = 0;
         currentTimeDisplay.textContent = '0:00';
-    });
+    }, { once: true });
 }
 
 // Tocar/Pausar
