@@ -22,7 +22,9 @@ header {
 }
 
 body.dark-mode header {
-    background: linear-gradient(to bottom, #444, #666);
+    background: linear-gradient(to bottom, #
+
+    444, #666);
 }
 
 header h1 {
@@ -99,6 +101,8 @@ body.dark-mode .audio-progress {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    min-width: 44px;
+    min-height: 44px;
     transition: background-color 0.3s;
 }
 
@@ -154,7 +158,7 @@ body.dark-mode #music-select {
     font-size: 1.1rem;
 }
 
-.whatsapp-btn {
+.whatsapp-btn, .form-btn {
     display: inline-block;
     background-color: #25d366;
     color: white;
@@ -166,13 +170,13 @@ body.dark-mode #music-select {
     transition: background-color 0.3s;
 }
 
-.whatsapp-btn:hover {
+.whatsapp-btn:hover, .form-btn:hover {
     background-color: #1ebe57;
 }
 
 .rsvp-form {
     margin-top: 2rem;
-    text-align: left;
+    text-align: center;
 }
 
 .rsvp-form h2 {
@@ -181,8 +185,21 @@ body.dark-mode #music-select {
     color: #d81b60;
 }
 
-.rsvp-form iframe {
-    max-width: 100%;
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 120%; /* Proporção para manter o layout do formulário */
+    height: 0;
+    overflow: hidden;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 .photo-gallery {
@@ -393,9 +410,8 @@ footer a {
         font-size: 2rem;
     }
 
-    .rsvp-form iframe {
-        width: 100%;
-        height: 700px;
+    .iframe-container {
+        padding-bottom: 150%; /* Aumenta a proporção para telas menores */
     }
 
     .audio-controls {
@@ -414,7 +430,7 @@ footer a {
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
     }
 
     #lightbox-img {
@@ -424,5 +440,10 @@ footer a {
 
     .countdown {
         font-size: 1.2rem;
+    }
+
+    .whatsapp-btn, .form-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
 }
