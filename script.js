@@ -27,11 +27,11 @@ let currentTrackIndex = 0;
 
 // Lista de imagens da galeria com legendas
 let galleryImages = [
-    { src: 'IMG-20190911-125844.jpg', caption: 'Fogueira 2019', type: 'image' },
+    { src: 'IMG-20190911-125844.jpg', caption: 'familia abençoada', type: 'image' },
     { src: 'IMG-20190915-WA0013.jpg', caption: 'Família reunida', type: 'image' },
     { src: 'IMG-20250609-WA0059.jpg', caption: 'Sorriso da vovó', type: 'image' },
     { src: 'IMG-20250609-WA0061.jpg', caption: 'Momento especial', type: 'image' },
-    { src: 'IMG-20250610-WA0003.jpg', caption: 'Festa junina', type: 'image' },
+    { src: 'IMG-20250610-WA0003.jpg', caption: 'Festa', type: 'image' },
     { src: 'IMG-20250610-WA0007.jpg', caption: 'Nova foto 1', type: 'image' },
     { src: 'IMG-20250613-WA0004.jpg', caption: 'Nova foto 2', type: 'image' },
     { src: 'IMG-20250613-WA0005.jpg', caption: 'Nova foto 3', type: 'image' },
