@@ -10,6 +10,9 @@ const durationDisplay = document.getElementById('duration');
 const scrollTopBtn = document.getElementById('scroll-top-btn');
 const themeBtn = document.getElementById('theme-btn');
 const carouselPlayPauseBtn = document.getElementById('carousel-play-pause');
+const uploadBtn = document.getElementById('upload-btn');
+const mediaUpload = document.getElementById('media-upload');
+const uploadStatus = document.getElementById('upload-status');
 let isPlaying = false;
 let isCarouselPlaying = true;
 let carouselInterval;
@@ -23,14 +26,31 @@ const playlist = [
 let currentTrackIndex = 0;
 
 // Lista de imagens da galeria com legendas
-const galleryImages = [
-    { src: 'IMG-20190915-WA0013.jpg', caption: 'Fogueira 2019' },
-    { src: 'IMG-20250609-WA0059.jpg', caption: 'Família reunida' },
-    { src: 'IMG-20250609-WA0061.jpg', caption: 'Sorriso da vovó' },
-    { src: 'IMG-20250610-WA0007.jpg', caption: 'Momento especial' },
-    { src: 'IMG-20250610-WA0003.jpg', caption: 'Festa junina' }
+let galleryImages = [
+    { src: 'IMG-20190911-125844.jpg', caption: 'Fogueira 2019', type: 'image' },
+    { src: 'IMG-20190915-WA0013.jpg', caption: 'Família reunida', type: 'image' },
+    { src: 'IMG-20250609-WA0059.jpg', caption: 'Sorriso da vovó', type: 'image' },
+    { src: 'IMG-20250609-WA0061.jpg', caption: 'Momento especial', type: 'image' },
+    { src: 'IMG-20250610-WA0003.jpg', caption: 'Festa junina', type: 'image' },
+    { src: 'IMG-20250610-WA0007.jpg', caption: 'Nova foto 1', type: 'image' },
+    { src: 'IMG-20250613-WA0004.jpg', caption: 'Nova foto 2', type: 'image' },
+    { src: 'IMG-20250613-WA0005.jpg', caption: 'Nova foto 3', type: 'image' },
+    { src: 'IMG-20250613-WA0006.jpg', caption: 'Nova foto 4', type: 'image' },
+    { src: 'IMG-20250613-WA0007.jpg', caption: 'Nova foto 5', type: 'image' },
+    { src: 'IMG-20250614-WA0041.jpg', caption: 'Nova foto 6', type: 'image' },
+    { src: 'IMG-20250614-WA0042.jpg', caption: 'Nova foto 7', type: 'image' },
+    { src: 'IMG-20220911-14422429.jpg', caption: 'Nova foto 8', type: 'image' },
+    { src: 'IMG-20250317-17048018.jpg', caption: 'Nova foto 9', type: 'image' },
+    { src: 'IMG-20250614-16249228.jpg', caption: 'Nova foto 10', type: 'image' }
 ];
 let currentImageIndex = 0;
+
+// Carregar mídias salvas no localStorage
+function loadSavedMedia() {
+    const savedMedia = JSON.parse(localStorage.getItem('galleryMedia') || '[]');
+    galleryImages = [...galleryImages, ...savedMedia];
+    updateGallery();
+}
 
 // Função para formatar tempo (mm:ss)
 function formatTime(seconds) {
@@ -117,20 +137,104 @@ document.querySelector('.whatsapp-btn').addEventListener('click', () => {
     alert('Você será redirecionado para o grupo do WhatsApp!');
 });
 
-// Controle da galeria de fotos (lightbox)
-function openLightbox(src, index) {
+// Função para atualizar a galeria
+function updateGallery() {
+    const galleryGrid = document.querySelector('.gallery-grid');
+    galleryGrid.innerHTML = ''; // Limpar galeria
+    galleryImages.forEach((media, index) => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+        let mediaElement;
+        if (media.type === 'image') {
+            mediaElement = document.createElement('img');
+            mediaElement.src = media.src;
+            mediaElement.alt = media.caption;
+            mediaElement.className = 'gallery-img';
+            mediaElement.loading = 'lazy';
+        } else {
+            mediaElement = document.createElement('video');
+            mediaElement.src = media.src;
+            mediaElement.className = 'gallery-video';
+            mediaElement.poster = 'thumbnail.jpg'; // Substitua por um thumbnail real se disponível
+            mediaElement.controls = true;
+        }
+        mediaElement.onclick = () => openLightbox(media.src, index, media.type);
+        const caption = document.createElement('div');
+        caption.className = 'gallery-caption';
+        caption.textContent = media.caption;
+        galleryItem.appendChild(mediaElement);
+        galleryItem.appendChild(caption);
+        galleryGrid.appendChild(galleryItem);
+    });
+}
+
+// Função para lidar com upload de arquivos
+uploadBtn.addEventListener('click', () => {
+    const files = mediaUpload.files;
+    if (!files.length) {
+        uploadStatus.textContent = 'Por favor, selecione pelo menos um arquivo.';
+        return;
+    }
+
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    const validTypes = ['image/jpeg', 'image/png', 'video/mp4'];
+    const newMedia = [];
+
+    Array.from(files).forEach(file => {
+        if (!validTypes.includes(file.type)) {
+            uploadStatus.textContent = `Arquivo ${file.name} não é um formato válido (JPG, PNG ou MP4).`;
+            return;
+        }
+        if (file.size > maxSize) {
+            uploadStatus.textContent = `Arquivo ${file.name} excede o limite de 10MB.`;
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const mediaType = file.type.startsWith('image') ? 'image' : 'video';
+            const caption = `Enviado: ${file.name}`;
+            newMedia.push({ src: e.target.result, caption, type: mediaType });
+            if (newMedia.length === files.length) {
+                galleryImages = [...galleryImages, ...newMedia];
+                localStorage.setItem('galleryMedia', JSON.stringify(newMedia));
+                updateGallery();
+                uploadStatus.textContent = 'Arquivos enviados com sucesso!';
+                mediaUpload.value = ''; // Limpar input
+            }
+        };
+        reader.readAsDataURL(file);
+    });
+});
+
+// Controle da galeria de fotos e vídeos (lightbox)
+function openLightbox(src, index, type = 'image') {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVideo = document.getElementById('lightbox-video');
     const lightboxCaption = document.getElementById('lightbox-caption');
     currentImageIndex = index;
+
     lightbox.classList.add('loading');
     lightboxImg.style.display = 'none';
+    lightboxVideo.style.display = 'none';
     lightboxImg.src = '';
-    lightboxImg.src = src;
-    lightboxImg.onload = () => {
-        lightbox.classList.remove('loading');
-        lightboxImg.style.display = 'block';
-    };
+    lightboxVideo.src = '';
+
+    if (type === 'image') {
+        lightboxImg.src = src;
+        lightboxImg.onload = () => {
+            lightbox.classList.remove('loading');
+            lightboxImg.style.display = 'block';
+        };
+    } else {
+        lightboxVideo.src = src;
+        lightboxVideo.onloadeddata = () => {
+            lightbox.classList.remove('loading');
+            lightboxVideo.style.display = 'block';
+        };
+    }
+
     lightboxCaption.textContent = galleryImages[currentImageIndex].caption;
     lightbox.style.display = 'flex';
     stopCarousel();
@@ -138,15 +242,18 @@ function openLightbox(src, index) {
 
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
+    const lightboxVideo = document.getElementById('lightbox-video');
+    lightboxVideo.pause(); // Pausar vídeo ao fechar
     lightbox.style.display = 'none';
 }
 
 function changeLightboxImage(direction) {
     currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
-    openLightbox(galleryImages[currentImageIndex].src, currentImageIndex);
+    const media = galleryImages[currentImageIndex];
+    openLightbox(media.src, currentImageIndex, media.type);
 }
 
-// Fechar lightbox ao clicar fora da imagem
+// Fechar lightbox ao clicar fora do conteúdo
 document.getElementById('lightbox').addEventListener('click', (event) => {
     if (event.target === event.currentTarget) {
         closeLightbox();
@@ -169,7 +276,8 @@ function startCarousel() {
     if (isCarouselPlaying) {
         carouselInterval = setInterval(() => {
             const nextIndex = (currentImageIndex + 1) % galleryImages.length;
-            openLightbox(galleryImages[nextIndex].src, nextIndex);
+            const media = galleryImages[nextIndex];
+            openLightbox(media.src, nextIndex, media.type);
         }, 3000);
     }
 }
@@ -219,7 +327,7 @@ themeBtn.addEventListener('click', toggleTheme);
 
 // Contagem regressiva
 function updateCountdown() {
-    const eventDate = new Date('2025-06-14T18:00:00');
+    const eventDate = new Date('2025-06-14T18:00:00-03:00'); // Ajustado para fuso -03
     const now = new Date();
     const timeDiff = eventDate - now;
 
@@ -242,5 +350,7 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Carregar a primeira música
+// Carregar a primeira música e mídias salvas
 loadTrack(0);
+loadSavedMedia();
+updateGallery();
