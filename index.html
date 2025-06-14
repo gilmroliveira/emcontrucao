@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="theme-toggle">
-            <button id="theme-btn" title="Alternar tema">🌙</button>
+            <button id="theme-btn" title="Alternar tema" aria-label="Alternar entre modo claro e escuro">🌙</button>
         </div>
         <h1>Fogueira na Casa da Vovó</h1>
         <p>Venha curtir uma noite com a família!</p>
@@ -30,16 +30,16 @@
                 <source id="audio-source" src="massademandioca.mp3" type="audio/mpeg">
                 Seu navegador não suporta áudio.
             </audio>
-            <button id="play-pause-btn">Tocar Música</button>
-            <button id="prev-btn">Anterior</button>
-            <button id="next-btn">Próxima</button>
-            <select id="music-select">
+            <button id="play-pause-btn" aria-label="Tocar ou pausar música">Tocar Música</button>
+            <button id="prev-btn" aria-label="Música anterior">Anterior</button>
+            <button id="next-btn" aria-label="Próxima música">Próxima</button>
+            <select id="music-select" aria-label="Selecionar música">
                 <option value="massademandioca.mp3">Música 1: Massa de Mandioca</option>
                 <option value="mastruzcomleite.mp3">Música 2: Mastruz com Leite</option>
                 <option value="wsafadao.mp3">Música 3: Wesley Safadão</option>
             </select>
             <div class="audio-progress">
-                <input type="range" id="progress-bar" min="0" max="100" value="0">
+                <input type="range" id="progress-bar" min="0" max="100" value="0" aria-label="Barra de progresso da música">
                 <span id="current-time">0:00</span> / <span id="duration">0:00</span>
             </div>
         </div>
@@ -50,7 +50,7 @@
         <div class="event-details">
             <h2>Sobre a Fogueira</h2>
             <p>🎉 <strong>Junte-se a nós para um encontro inesquecível na casa da vovó!</strong> 🏡✨  
-Traga sua alegria 😊 e uma contribuição para nossa fogueira 🔥: comidas típicas como canjica 🌽, pamonha 🌽, bolo de milho 🥮, sucos 🧃 ou refrigerantes 🥤. Venha celebrar esse momento especial para estar com nossa querida matriarca 👵, comer delícias 😋 e aquecer o coração com amor e união! ❤️🌟</p>
+Traga sua alegria 😊 e uma contribuição para nossa fogueira 🔥: comidas típicas como canjica 🌽, pamonha 🌽, bolo de milho 🥮, sucos 🧃 ou refrigerantes 🥤. Venha celebrar esse momento especial para estar com nossa Arabica, comer delícias 😋 e aquecer o coração com amor e união! ❤️🌟</p>
             <p><strong>Agradecimento pelo Engajamento na Fogueira na Casa da Vovó</strong> 🎉🔥  
 Querida família e amigos, muito obrigado pelo entusiasmo e apoio incrível para tornar a nossa Fogueira na Casa da Vovó um momento especial! ❤️ O engajamento de vocês, com tantas confirmações e contribuições, está aquecendo nossos corações e tornando esse encontro ainda mais significativo. Reunir-nos na casa da vovó é uma oportunidade preciosa para celebrar o amor, a união e a presença dela, que ilumina nossas vidas. 🌟  
 Queremos ver ainda mais rostos sorridentes ao redor da fogueira! 🌈 Convidem seus familiares e amigos para se juntarem a nós nesse momento único de conexão e carinho. Quanto mais pessoas, mais especial será nossa homenagem à vovó! 🥰 Tragam suas melhores energias e venham compartilhar memórias e alegria com ela e com todos nós! 🎶  
@@ -58,7 +58,7 @@ Nos vemos na Casa da Vovó, prontos para celebrar juntos esse laço tão especia
 #FogueiraNaCasaDaVovó #Família #Amor</p>
             <p>Já temos certeza que vai ter bolo de tapioca (tapiocão) e muito refri!</p>
             <ul>
-                <li><strong>Data:</strong> 14/06/2025. SÁBADO!!</li>
+                <li><strong>Data:</strong> 14/06/2025. SÁBADO!!</strong></li>
                 <li><strong>Horário:</strong> A partir das 18h</li>
                 <li><strong>Local:</strong> Casa da Vovó - RUA DAS PALMEIRAS NO ACONCHEGO DE VÓ</li>
                 <li><strong>Mapa:</strong> <a href="https://maps.app.goo.gl/ydfTaH9UUttDW Cochran9kx5" target="_blank">Ver no Google Maps</a></li>
@@ -76,39 +76,90 @@ Nos vemos na Casa da Vovó, prontos para celebrar juntos esse laço tão especia
             <p>Caso tenha problemas com o formulário, confirme sua presença no <a href="https://chat.whatsapp.com/LVs5tO0yo7vLgFI7KM9Rd6" target="_blank">grupo do WhatsApp</a> ou <a href="https://docs.google.com/forms/d/e/1FAIpQLSeBUWdLq6SDcrEBv1WQCRLL-7OxzMVFFJEPhqH_QMpoeozigg/viewform" target="_blank" class="form-btn">acesse o formulário diretamente</a>.</p>
         </div>
 
+        <div class="upload-section">
+            <h2>Compartilhe Suas Fotos e Vídeos</h2>
+            <p>Adicione suas memórias da Fogueira na Casa da Vovó! (Formatos aceitos: JPG, PNG, MP4, até 10MB)</p>
+            <input type="file" id="media-upload" accept="image/jpeg,image/png,video/mp4" multiple aria-label="Enviar fotos ou vídeos">
+            <button id="upload-btn" aria-label="Enviar arquivos selecionados">Enviar</button>
+            <p id="upload-status"></p>
+        </div>
+
         <div class="photo-gallery">
-            <h2>Galeria de Fotos</h2>
+            <h2>Galeria de Fotos e Vídeos</h2>
             <div class="carousel-controls">
-                <button id="carousel-play-pause">Pausar Carrossel</button>
+                <button id="carousel-play-pause" aria-label="Pausar ou iniciar carrossel">Pausar Carrossel</button>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="IMG-20190915-WA0013.jpg" alt="Fogueira 2019" class="gallery-img" onclick="openLightbox(this.src, 0)" loading="lazy">
+                    <img src="IMG-20190911-125844.jpg" alt="Fogueira 2019" class="gallery-img" onclick="openLightbox(this.src, 0)" loading="lazy">
                     <div class="gallery-caption">Fogueira 2019</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="IMG-20250609-WA0059.jpg" alt="Família reunida" class="gallery-img" onclick="openLightbox(this.src, 1)" loading="lazy">
+                    <img src="IMG-20190915-WA0013.jpg" alt="Família reunida" class="gallery-img" onclick="openLightbox(this.src, 1)" loading="lazy">
                     <div class="gallery-caption">Família reunida</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="IMG-20250609-WA0061.jpg" alt="Sorriso da vovó" class="gallery-img" onclick="openLightbox(this.src, 2)" loading="lazy">
+                    <img src="IMG-20250609-WA0059.jpg" alt="Sorriso da vovó" class="gallery-img" onclick="openLightbox(this.src, 2)" loading="lazy">
                     <div class="gallery-caption">Sorriso da vovó</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="IMG-20250610-WA0007.jpg" alt="Momento especial" class="gallery-img" onclick="openLightbox(this.src, 3)" loading="lazy">
+                    <img src="IMG-20250609-WA0061.jpg" alt="Momento especial" class="gallery-img" onclick="openLightbox(this.src, 3)" loading="lazy">
                     <div class="gallery-caption">Momento especial</div>
                 </div>
                 <div class="gallery-item">
                     <img src="IMG-20250610-WA0003.jpg" alt="Festa junina" class="gallery-img" onclick="openLightbox(this.src, 4)" loading="lazy">
                     <div class="gallery-caption">Festa junina</div>
                 </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250610-WA0007.jpg" alt="Nova foto 1" class="gallery-img" onclick="openLightbox(this.src, 5)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 1</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250613-WA0004.jpg" alt="Nova foto 2" class="gallery-img" onclick="openLightbox(this.src, 6)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 2</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250613-WA0005.jpg" alt="Nova foto 3" class="gallery-img" onclick="openLightbox(this.src, 7)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 3</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250613-WA0006.jpg" alt="Nova foto 4" class="gallery-img" onclick="openLightbox(this.src, 8)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 4</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250613-WA0007.jpg" alt="Nova foto 5" class="gallery-img" onclick="openLightbox(this.src, 9)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 5</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250614-WA0041.jpg" alt="Nova foto 6" class="gallery-img" onclick="openLightbox(this.src, 10)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 6</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250614-WA0042.jpg" alt="Nova foto 7" class="gallery-img" onclick="openLightbox(this.src, 11)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 7</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20220911-14422429.jpg" alt="Nova foto 8" class="gallery-img" onclick="openLightbox(this.src, 12)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 8</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250317-17048018.jpg" alt="Nova foto 9" class="gallery-img" onclick="openLightbox(this.src, 13)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 9</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250614-16249228.jpg" alt="Nova foto 10" class="gallery-img" onclick="openLightbox(this.src, 14)" loading="lazy">
+                    <div class="gallery-caption">Nova foto 10</div>
+                </div>
             </div>
             <div id="lightbox" class="lightbox">
                 <div class="spinner"></div>
-                <span class="close-lightbox" onclick="closeLightbox()">×</span>
-                <span class="prev-lightbox" onclick="changeLightboxImage(-1)">❮</span>
-                <img id="lightbox-img" src="" alt="Imagem ampliada">
-                <span class="next-lightbox" onclick="changeLightboxImage(1)">❯</span>
+                <span class="close-lightbox" onclick="closeLightbox()" aria-label="Fechar lightbox">×</span>
+                <span class="prev-lightbox" onclick="changeLightboxImage(-1)" aria-label="Imagem anterior">❮</span>
+                <div id="lightbox-media-container">
+                    <img id="lightbox-img" src="" alt="Imagem ampliada" style="display: none;">
+                    <video id="lightbox-video" controls style="display: none;" alt="Vídeo ampliado"></video>
+                </div>
+                <span class="next-lightbox" onclick="changeLightboxImage(1)" aria-label="Próxima imagem">❯</span>
                 <div id="lightbox-caption"></div>
             </div>
         </div>
@@ -122,7 +173,7 @@ Nos vemos na Casa da Vovó, prontos para celebrar juntos esse laço tão especia
         <p id="music-attribution">Música: de Sucesso!!</p>
     </footer>
 
-    <button id="scroll-top-btn" title="Voltar ao topo">↑</button>
+    <button id="scroll-top-btn" title="Voltar ao topo" aria-label="Voltar ao topo da página">↑</button>
 
     <script src="script.js"></script>
 </body>
