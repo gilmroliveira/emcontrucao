@@ -27,7 +27,7 @@ let currentTrackIndex = 0;
 
 // Lista de imagens da galeria com legendas
 let galleryImages = [
-    { src: 'IMG-20190911-125844.jpg', caption: 'familia abençoada', type: 'image' },
+    { src: 'VID-20250614-WA0040.mp4', caption: 'familia abençoada', type: 'image' },
     { src: 'IMG-20190915-WA0013.jpg', caption: 'Família reunida', type: 'image' },
     { src: 'IMG-20250609-WA0059.jpg', caption: 'Sorriso da vovó', type: 'image' },
     { src: 'IMG-20250609-WA0061.jpg', caption: 'Momento especial', type: 'image' },
